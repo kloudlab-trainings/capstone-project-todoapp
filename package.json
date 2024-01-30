@@ -4,7 +4,7 @@
   "description": "A simple to do list app ",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "mocha"
   },
   "author": "Vanessa Ating",
   "license": "ISC",
