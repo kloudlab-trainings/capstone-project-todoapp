@@ -1,4 +1,4 @@
-
+name: ToDo App in Node
 on:
   push:
     branches: [ "master" ]
