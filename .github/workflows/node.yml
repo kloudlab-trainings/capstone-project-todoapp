@@ -28,8 +28,8 @@ jobs:
     - name: SonarScan
       uses: sonarsource/sonarqube-scan-action@master
       env:
-        SONAR_TOKEN: sqa_97e45b766a3ada72ed65a712b99ff7e00a89486d
-        SONAR_HOST_URL: http://54.89.229.125:9000/
+        SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
