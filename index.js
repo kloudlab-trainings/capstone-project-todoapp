@@ -18,7 +18,7 @@ app.post("/addtask", function(req, res) {
     var newTask = req.body.newtask;
     //add the new task from the post route
     task.push(newTask);
-    res.redirect("/");
+    res.redirect("/"); 
 });
 
 app.post("/removetask", function(req, res) {
