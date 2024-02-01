@@ -33,8 +33,6 @@ jobs:
         
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v1.0.3
-      run: |
-        ls -al
       with:
         host: 54.89.229.125
         username: ubuntu
@@ -44,6 +42,16 @@ jobs:
           whoami
           ls -al
           uname -r
+
+    - name: Copying files to server
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 54.89.229.125
+        username: ubuntu
+        key: ${{ secrets.KEY }}
+        port: 22
+        source: "index.js"
+        target: "devopsfarm/index.js"
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
