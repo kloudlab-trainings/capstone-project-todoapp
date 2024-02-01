@@ -30,6 +30,17 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 54.89.229.125
+        username: ubuntu
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          whoami
+          ls -al
+          uname -r
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
