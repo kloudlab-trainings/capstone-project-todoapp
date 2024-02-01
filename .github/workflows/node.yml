@@ -30,8 +30,11 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v1.0.3
+      run: |
+        ls -al
       with:
         host: 54.89.229.125
         username: ubuntu
