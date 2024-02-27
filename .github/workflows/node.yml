@@ -33,14 +33,19 @@ jobs:
         
     - name: Run a multi-line script
       run: |
+        ls -al
         mkdir -p build
         mkdir -p build/views
         mkdir -p build/public
+        ls -al
         cp index.js build
         cp package-lock.json build
         cp package.json build
         cp views/* build/views
         cp public/* build/public
+        ls -al build/views
+        ls -al build/public
+        ls -al
         tar -czvf deploy.tar.gz build/*
         
     - name: Copying files to server
