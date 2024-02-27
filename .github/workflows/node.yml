@@ -41,7 +41,7 @@ jobs:
         cp package.json build
         cp views/* build/views
         cp public/* build/public
-        tar -cvf deploy.tar build/*
+        tar -czvf deploy.tar.gz build/*
         
     - name: Copying files to server
       uses: appleboy/scp-action@v0.1.7
@@ -65,7 +65,7 @@ jobs:
           ls -al
           uname -r
           cd node_app
-          tar –xvzf deploy.tar
+          tar –xvzf deploy.tar.gz
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
