@@ -30,7 +30,19 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
+        
+    - name: Run a multi-line script
+      run: |
+        mkdir -p build
+        mkdir -p build/views
+        mkdir -p build/public
+        cp index.js build
+        cp package-lock.json build
+        cp package.sjon build
+        cp views/* build/views
+        cp public/* build/public
+        tar -cvf deploy.tar build/*
+        
     - name: Copying files to server
       uses: appleboy/scp-action@v0.1.7
       with:
@@ -38,8 +50,8 @@ jobs:
         username: ubuntu
         key: ${{ secrets.KEY }}
         port: 22
-        source: "index.js"
-        target: "devopsfarm/index.js"
+        source: "deploy.tar"
+        target: "node_app/"
         
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v1.0.3
@@ -51,7 +63,9 @@ jobs:
         script: |
           whoami
           ls -al
-          uname -r    
+          uname -r
+          cd node_app
+          tar –xvzf deploy.tar
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
