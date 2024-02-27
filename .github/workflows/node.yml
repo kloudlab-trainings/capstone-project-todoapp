@@ -71,6 +71,9 @@ jobs:
           uname -r
           cd node_app
           tar -xzvf deploy.tar.gz
+          cd build
+          npm install
+          node index.js
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
