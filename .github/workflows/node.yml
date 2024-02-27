@@ -51,7 +51,7 @@ jobs:
     - name: Copying files to server
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: 44.202.37.73
+        host: 54.152.180.53
         username: ubuntu
         key: ${{ secrets.KEY }}
         port: 22
@@ -61,7 +61,7 @@ jobs:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: 44.202.37.73
+        host: 54.152.180.53
         username: ubuntu
         key: ${{ secrets.KEY }}
         port: 22
