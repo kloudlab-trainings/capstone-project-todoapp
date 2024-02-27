@@ -31,7 +31,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         
-    - name: Run a multi-line script
+    - name: Creating deploy.tar.gz
       run: |
         ls -al
         mkdir -p build
@@ -55,7 +55,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.KEY }}
         port: 22
-        source: "deploy.tar"
+        source: "deploy.tar.gz"
         target: "node_app/"
         
     - name: executing remote ssh commands using ssh key
