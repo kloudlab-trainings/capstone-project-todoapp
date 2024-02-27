@@ -70,7 +70,7 @@ jobs:
           ls -al
           uname -r
           cd node_app
-          tar –xvzf deploy.tar.gz
+          tar –xzvf deploy.tar.gz
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
