@@ -38,7 +38,7 @@ jobs:
         mkdir -p build/public
         cp index.js build
         cp package-lock.json build
-        cp package.sjon build
+        cp package.json build
         cp views/* build/views
         cp public/* build/public
         tar -cvf deploy.tar build/*
