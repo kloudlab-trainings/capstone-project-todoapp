@@ -74,7 +74,7 @@ jobs:
           cd build
           kill -9 `sudo lsof -t -i:3000`
           npm install
-          forever index.js
+          forever start index.js
         
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
