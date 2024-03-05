@@ -6,7 +6,7 @@ on:
 
 env:
   NODE_VERSION: '6.17'
-  HOST_IP: '34.238.44.197'
+  HOST_IP: '52.91.97.151'
 
 jobs:
   build:
