@@ -1,5 +1,5 @@
-services :
-  web :
-    image : lalitjadaun/todo:latest
-    ports :
+services:
+  web:
+    image: 'lalitjadaun/todo:latest'
+    ports:
       - "3000:3000"
