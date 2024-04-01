@@ -1,3 +1,4 @@
+<!--
 <html>
 <head> 
 <title> ToDo App </title>
@@ -5,10 +6,10 @@
  <link href="/styles.css" rel="stylesheet">
 </head>
 
-<body style="background: #4D148C; color: #FFFFFF;">
+<body style="background: #14848c; color:#ffffff;">
 <div class="container">
-<img src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png">
-<h2> FedEx ToDo App - Designed by System Team</h2>
+<img src="https://s3.amazonaws.com/devopsfarm.in/devopsfarm-logo-1500x1500.png" alt="To Do App Logo">
+<h2> DevOps Farm ToDo App - Designed by DevOps Farm Team</h2>
 
 <form action ="/addtask" method="POST">
 
@@ -21,7 +22,7 @@
 <% for( var i = 0; i < task.length; i++){ %>
     <li><input type="checkbox" name="check" value="<%= task[i] %>" /> <%= task[i] %> </li>
 <% } %>
-
+<br>
 <button formaction="/removetask" type="submit" id="top"> Remove </button>
 </form>
 
@@ -31,7 +32,215 @@
     <li><input type="checkbox" checked><%= complete[i] %> </li>
 <% } %>
 
+<footer>
+    <p><h3>Created With Love❤ And Effort By: Team Devops Farm.</h3> </p>
+</footer>
+
 </div>
 
 </body>
 </html>
+
+-->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 200px;
+            height: auto;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .fgx-button {
+            background-color: #14848c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .fgx-button:hover {
+            background-color: #126e78;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        footer h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="https://s3.amazonaws.com/devopsfarm.in/devopsfarm-logo-1500x1500.png" alt="To Do App Logo">
+        <h2>DevOps Farm ToDo App - Designed by DevOps Farm Team</h2>
+
+        <form action="/addtask" method="POST">
+            <input type="text" name="newtask" placeholder="Add new task">
+            <button class="fgx-button" type="submit">Add Task</button>
+        </form>
+
+        <h2>Added Tasks</h2>
+        <ul>
+            <% for(var i = 0; i < task.length; i++){ %>
+                <li><input type="checkbox" name="check" value="<%= task[i] %>"><%= task[i] %></li>
+            <% } %>
+        </ul>
+
+        <form action="/removetask" method="POST">
+            <button class="fgx-button" type="submit">Remove</button>
+        </form>
+
+        <h2>Completed Tasks</h2>
+        <ul>
+            <% for(var i = 0; i < complete.length; i++){ %>
+                <li><input type="checkbox" checked disabled><%= complete[i] %></li>
+            <% } %>
+        </ul>
+
+        <footer>
+            <h3>Created With Love ❤️ And Effort By: Team Devops Farm.</h3>
+        </footer>
+    </div>
+</body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
+    <style>
+        body {
+            background: #14848c;
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container img {
+            max-width: 20%;
+            max-height: 110%;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .container .fgx-button {
+            background-color: #ffffff;
+            color: #14848c;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container .fgx-button:hover {
+            background-color: #eaeaea;
+        }
+        .container footer {
+            margin-top: 50px;
+        }
+        .container footer p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://s3.amazonaws.com/devopsfarm.in/devopsfarm-logo-1500x1500.png" alt="To Do App Logo"> 
+        <h2>DevOps Farm ToDo App - Designed by DevOps Farm Team</h2>
+
+        <form action="/addtask" method="POST">
+            <input type="text" name="newtask" placeholder="Add new task">
+            <button class="fgx-button" type="submit">Add Task</button>
+        </form>
+
+        <h2>Added Tasks</h2>
+        <ul>
+            <% for(var i = 0; i < task.length; i++){ %>
+                <input type="checkbox" name="check" value="<%= task[i] %>"><%= task[i] %>
+            <% } %>
+        </ul>
+<br>
+        <form action="/removetask" method="POST">
+            <button class="fgx-button" type="submit">Remove</button>
+        </form>
+
+        <h2>Completed Tasks</h2>
+        <ul>
+            <% for(var i = 0; i < complete.length; i++){ %>
+                <input type="checkbox" checked disabled><%= complete[i] %>
+            <% } %>
+        </ul>
+        <footer>
+            <p><strong>Created With Love❤ And Effort By: Team DevOps Farm.</strong></p>
+        </footer>
+    </div>
+</body>
+</html>
+
