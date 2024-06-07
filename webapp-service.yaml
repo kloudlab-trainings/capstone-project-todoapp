@@ -6,7 +6,7 @@ spec:
   selector:
     app: webapp
   ports:
-    - protocol: TCP
+    - protocol: HTTP
       port: 8080
       targetPort: 3000
   type: NodePort
