@@ -1,4 +1,4 @@
-def tag_name=""
+
 pipeline{
     agent { label 'docker' }
     
@@ -24,7 +24,7 @@ pipeline{
                     sh "docker login -u ${env.dockerHubUsername} -p ${env.dockerHubPassword}"
                     sh "docker tag todo_app ${env.dockerHubUsername}/todo:${BUILD_TAG}"
                     sh "docker push ${env.dockerHubUsername}/todo:${BUILD_TAG}"
-                    tag_name="${env.dockerHubUsername}/todo:${BUILD_TAG}"
+                    env['dockerImageName']="${env.dockerHubUsername}/todo:${BUILD_TAG}"
                 }
             }
             
@@ -38,7 +38,7 @@ pipeline{
             steps{
                 echo "Deploying TODO Application....."
                 sh "docker rm -f todo"
-                sh "docker run -d --name todo -p 3000:3000 ${tag_name}"
+                sh "docker run -d --name todo -p 3000:3000 ${env.dockerImageName}"
             }
         }
     }
