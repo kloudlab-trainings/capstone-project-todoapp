@@ -21,10 +21,9 @@ pipeline{
             steps{
                 echo "Pushing TODO Application to Dockerhub....."
                 withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUsername')]) {
-                    sh "docker login -u ${env.dockerHubUsername} -p ${env.dockerHubPassword}"
-                    sh "docker tag todo_app ${env.dockerHubUsername}/todo:${BUILD_TAG}"
-                    sh "docker push ${env.dockerHubUsername}/todo:${BUILD_TAG}"
-                    env['dockerImageName']="${env.dockerHubUsername}/todo:${BUILD_TAG}"
+                    sh "docker login -u devopsfarm -p ${env.dockerHubPassword}"
+                    sh "docker tag todo_app devopsfarm/todo:${BUILD_TAG}"
+                    sh "docker push devopsfarm/todo:${BUILD_TAG}"
                 }
             }
             
@@ -38,7 +37,7 @@ pipeline{
             steps{
                 echo "Deploying TODO Application....."
                 sh "docker rm -f todo"
-                sh "docker run -d --name todo -p 3000:3000 ${env.dockerImageName}"
+                sh "docker run -d --name todo -p 3000:3000 devopsfarm/todo:${BUILD_TAG}"
             }
         }
     }
