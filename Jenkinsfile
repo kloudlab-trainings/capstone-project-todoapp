@@ -11,6 +11,7 @@ pipeline {
 
     parameters {
         booleanParam(name: 'Run_Deploy_Stage', defaultValue: true, description: 'Run deployment stage')
+        booleanParam(name: 'Use_Kubernetes', defaultValue: true, description: 'Deploy to Kubernetes instead of Docker')
     }
 
     stages {
@@ -53,14 +54,34 @@ pipeline {
             when {
                 expression { params.Run_Deploy_Stage }
             }
-            steps {
-                script {
-                    echo "Deploying TODO Application to Kubernetes....."
-                    withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG')]) {
-                        sh """
-                        kubectl apply -f webapp-deployment.yaml
-                        kubectl apply -f webapp-service.yaml
-                        """
+            stages {
+                stage('Docker Deploy') {
+                    when {
+                        expression { !params.Use_Kubernetes }
+                    }
+                    steps {
+                        script {
+                            echo "Deploying TODO Application with Docker....."
+                            sh "docker rm -f todo || true"
+                            sh "docker run -d --name todo -p 3000:3000 ${DOCKER_IMAGE}:${BUILD_TAG}"
+                        }
+                    }
+                }
+
+                stage('Kubernetes Deploy') {
+                    when {
+                        expression { params.Use_Kubernetes }
+                    }
+                    steps {
+                        script {
+                            echo "Deploying TODO Application to Kubernetes....."
+                            withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG')]) {
+                                sh """
+                                kubectl apply -f webapp-deployment.yaml
+                                kubectl apply -f webapp-service.yaml
+                                """
+                            }
+                        }
                     }
                 }
             }
