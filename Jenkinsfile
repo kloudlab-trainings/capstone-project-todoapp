@@ -44,6 +44,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUsername')]) {
                         sh "docker login -u ${dockerHubUsername} -p ${dockerHubPassword}"
                         sh "docker tag todo_app ${DOCKER_IMAGE}:${BUILD_TAG}"
+                        sh "docker tag todo_app ${DOCKER_IMAGE}:latest"
                         sh "docker push ${DOCKER_IMAGE}:${BUILD_TAG}"
                         sh "docker push ${DOCKER_IMAGE}:latest"
                     }
