@@ -6,7 +6,7 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'dockerHub'
         GIT_CREDENTIALS_ID = 'GitHub-HTTPS-Credential'
         KUBECONFIG_CREDENTIALS_ID = 'Kubeconfig-Credential'
-        GIT_BRANCH = 'main'
+        GIT_BRANCH = 'k8s-deploy'
     }
 
     parameters {
