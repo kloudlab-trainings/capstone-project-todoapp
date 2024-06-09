@@ -81,7 +81,7 @@ pipeline {
                                 sh """
                                 curl -LO "https://dl.k8s.io/release/\$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
                                 chmod +x kubectl
-                                ./kubectl delete -f webapp-deployment.yaml || echo "Doesn not exist"
+                                ./kubectl delete -f webapp-deployment.yaml || echo "Doesn't not exist"
                                 ./kubectl apply -f webapp-deployment.yaml
                                 ./kubectl apply -f webapp-service.yaml
                                 ./kubectl get svc -o wide
