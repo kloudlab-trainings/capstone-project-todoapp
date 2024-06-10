@@ -1,17 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: todoapp-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: webapp
+      app: todoapp
   template:
     metadata:
       labels:
-        app: webapp
+        app: todoapp
     spec:
       containers:
-      - name: webapp-container
-        image: lalitjadaun/todo:jenkins-todo-cicd-26
+      - name: todoapp-container
+        image: devopsfarm/todo:latest
+        imagePullPolicy: Always
